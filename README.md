@@ -7,7 +7,8 @@ Full stack app with React for frontend and Hono for backend deployed to Cloudfla
 - Frontend: React
 - Backend or functions: Hono
 - Hosting: Cloudflare pages with functions
-- Database: Cloudflare D1
-- ORM: Drizzle
+- Database: Cloudflare D1 (WIP)
+- ORM: Drizzle (WIP)
 - Auth: Lucia (WIP)
 - Design: Tailwind (WIP)
+- Routing: TanStack Router
