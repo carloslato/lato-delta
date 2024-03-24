@@ -12,7 +12,7 @@ function Index() {
   const [idUser, setIdUser] = useState('');
   const [nameUser, setNameUser] = useState('');
   const [emailUser, setEmailUser] = useState('');
-  const [todolist, setTodolist] = useState<UsersType>();
+  const [todolist, setTodolist] = useState<{ id: number; name: string; email: string; }[]>();
 
   async function sendTask() {
   //e.preventDefault;
@@ -34,7 +34,7 @@ async function getTasks() {
   const client = hc<AppType>("");
   const res = await client.api.users.$get();
   const data = await res.json();
-  //setTodolist(data.todos);
+  setTodolist(data);
   console.log(data);
 }
 
