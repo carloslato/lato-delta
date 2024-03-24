@@ -9,9 +9,14 @@ import { env } from 'hono/adapter'
 
 import { users } from './schema';
 
-export interface Env {
-  DB_VAR: D1Database;
+// export interface Env {
+//   DB_VAR: D1Database;
+// }
+
+type Bindings = {
+  DB_VAR: D1Database
 }
+
 
 // export default {
 //   async fetch(request: Request, env: Env) {
@@ -21,7 +26,7 @@ export interface Env {
 //   },
 // };
 
-const app = new Hono<{ Bindings: Env }>().basePath('/api')
+const app = new Hono<{ Bindings: Bindings }>().basePath('/api')
 
 const schema = z.object({
   idUser: z.string(),
