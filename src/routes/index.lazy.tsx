@@ -12,7 +12,7 @@ function Index() {
   const [idUser, setIdUser] = useState('');
   const [nameUser, setNameUser] = useState('');
   const [emailUser, setEmailUser] = useState('');
-  //const [todolist, setTodolist] = useState<UsersType>([]);
+  const [todolist, setTodolist] = useState<UsersType>();
 
   async function sendTask() {
   //e.preventDefault;
@@ -26,7 +26,7 @@ function Index() {
     },
   });
   const data = await res.json();
-  //getTasks();
+  getTasks();
   console.log(data);
 }
 
@@ -39,7 +39,7 @@ async function getTasks() {
 }
 
 useEffect(() => {
-  //getTasks();
+  getTasks();
 }, [])
 
 
@@ -56,9 +56,9 @@ useEffect(() => {
       </div>
 
       <ul>
-        {/* {todolist?.map((item, index) =>
-            <li key={index}>{item.id}: {item.title}</li>
-        )} */}
+        {todolist?.map((item: any, index: number) =>
+            <li key={index}>{item.id}: {item.name} - {item.email}</li>
+        )}
       </ul>
       
 
