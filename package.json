@@ -9,7 +9,7 @@
     "deploy": "$npm_execpath run build && wrangler pages deploy dist",
     "generate": "drizzle-kit generate:sqlite --schema=src/schema.ts",
     "up": "drizzle-kit up:sqlite --schema=src/schema.ts",
-    "build-deploy": "npm run build && drizzle-kit generate:sqlite --schema=functions/api/schema.ts && drizzle-kit up:sqlite --schema=functions/api/schema.ts"
+    "build-deploy": "npm run build && drizzle-kit generate:sqlite --schema=functions/api/schema.ts && drizzle-kit up:sqlite"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.0",
