@@ -1,38 +1,3 @@
-// import { useState } from "hono/jsx";
-// import { render } from "hono/jsx/dom";
-// import { AppType } from "../functions/api/[[route]]";
-// import { hc } from "hono/client";
-
-
-// async function name() {
-//   const client = hc<AppType>("");
-//   const res = await client.api.todo.$post({
-//     form: {
-//       id: "Hono 3",
-//       title: "Hola que tal 4",
-//     },
-//   });
-
-//   const data = await res.json();
-//   console.log(`${data.message}`);
-// }
-
-// name();
-
-
-
-// function App() {
-//   return (
-//     <>
-//       <Counter />
-
-//     </>
-//   );
-// }
-
-// const root: HTMLElement = document.getElementById("root") as HTMLElement;
-// render(<App />, root);
-
 import React, { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'

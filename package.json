@@ -3,15 +3,19 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "server-dev": "npx wrangler pages dev --port 3001 --proxy 3000 -- npm run dev",
+    "server": "npx wrangler pages dev --port 3001 --proxy 3000 -- npm run dev",
+    "server-dev": "npx wrangler pages dev --port 3001 --proxy 3000 --d1 DB_VAR=334d4f76-a590-47bc-8eb6-b013948ab8a4 -- npm run dev",
     "preview": "wrangler pages dev dist",
-    "deploy": "$npm_execpath run build && wrangler pages deploy dist"
+    "deploy": "$npm_execpath run build && wrangler pages deploy dist",
+    "generate": "drizzle-kit generate:sqlite --schema=src/schema.ts",
+    "up": "drizzle-kit up:sqlite --schema=src/schema.ts"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.0",
     "@tanstack/react-router": "^1.19.13",
     "@tanstack/router-devtools": "^1.19.13",
     "@vitejs/plugin-react": "^4.2.1",
+    "drizzle-orm": "^0.30.4",
     "hono": "^4.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,6 +29,7 @@
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
+    "drizzle-kit": "^0.20.14",
     "vite": "^5.0.12",
     "wrangler": "^3.32.0"
   }

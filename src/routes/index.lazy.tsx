@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { AppType, TodosType } from "../../functions/api/[[route]]";
+import { AppType, UsersType } from "../../functions/api/[[route]]";
 import { hc } from "hono/client";
 import { useState, useEffect, useLayoutEffect } from 'react';
 
@@ -9,34 +9,37 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
 
-  const [idTask, setIdTask] = useState('');
-  const [titleTask, setTitleTask] = useState('');
-  const [todolist, setTodolist] = useState<TodosType>([])
+  const [idUser, setIdUser] = useState('');
+  const [nameUser, setNameUser] = useState('');
+  const [emailUser, setEmailUser] = useState('');
+  //const [todolist, setTodolist] = useState<UsersType>([]);
 
   async function sendTask() {
   //e.preventDefault;
   const client = hc<AppType>("");
-  const res = await client.api.todo.$post({
+  const res = await client.api.users.$post({
     form: {
-      id: idTask,
-      title: titleTask,
+      idUser: `${idUser}`,
+      name: nameUser,
+      email: emailUser,
+      
     },
   });
   const data = await res.json();
-  getTasks();
-  console.log(`${data.message}`);
+  //getTasks();
+  console.log(data);
 }
 
 async function getTasks() {
   const client = hc<AppType>("");
-  const res = await client.api.todo.$get();
+  const res = await client.api.users.$get();
   const data = await res.json();
-  setTodolist(data.todos);
+  //setTodolist(data.todos);
   console.log(data);
 }
 
 useEffect(() => {
-  getTasks();
+  //getTasks();
 }, [])
 
 
@@ -45,16 +48,17 @@ useEffect(() => {
       <h3>Welcome Home!</h3>
       <div>
         <div>
-          <input id="id" type="text"  onChange={(e) => setIdTask(e.target.value)} />
-          <input id="title" type="text" onChange={(e) => setTitleTask(e.target.value)} />
+          <input id="id" type="number"  onChange={(e) => setIdUser(e.target.value)} />
+          <input id="name" type="text" onChange={(e) => setNameUser(e.target.value)} />
+          <input id="email" type="text" onChange={(e) => setEmailUser(e.target.value)} />
           <button onClick={sendTask}>guardar</button>
         </div>
       </div>
 
       <ul>
-        {todolist?.map((item, index) =>
+        {/* {todolist?.map((item, index) =>
             <li key={index}>{item.id}: {item.title}</li>
-        )}
+        )} */}
       </ul>
       
 
