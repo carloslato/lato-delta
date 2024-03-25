@@ -4,7 +4,7 @@
     "dev": "vite",
     "build": "vite build",
     "server": "npx wrangler pages dev --port 3001 --proxy 3000 -- npm run dev",
-    "server-dev": "npx wrangler pages dev --port 3001 --proxy 3000 --d1 DB_VAR=334d4f76-a590-47bc-8eb6-b013948ab8a4 --local -- npm run dev",
+    "server-dev": "npx wrangler pages dev --port 3001 --proxy 3000 --d1 DB_VAR=334d4f76-a590-47bc-8eb6-b013948ab8a4 -- npm run dev",
     "preview": "wrangler pages dev dist",
     "deploy": "$npm_execpath run build && wrangler pages deploy dist",
     "generate": "drizzle-kit generate:sqlite --schema=functions/api/schema.ts",
