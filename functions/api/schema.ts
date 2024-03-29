@@ -1,10 +1,10 @@
 import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 export const users = sqliteTable('users', {
-	id: text("id").notNull().primaryKey(),
-	name: text('name').notNull(),
-	email: text('email').notNull(),
-	// hashed_password: text('hashed_password').notNull()
+	id: text("id").primaryKey(),
+	name: text('name'),
+	email: text('email'),
+	hashed_password: text('hashed_password')
 });
 
 export const sessionTable = sqliteTable("session", {
