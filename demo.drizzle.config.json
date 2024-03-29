@@ -1,0 +1,10 @@
+{
+	"out": "drizzle",
+	"schema": "functions/api/schema.ts",
+	"driver": "d1",
+	"dbCredentials": {
+		"wranglerConfigPath": "./wrangler.toml",
+		"dbName": "delta_db",
+		"local": true
+	  }
+}

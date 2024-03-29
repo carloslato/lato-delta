@@ -10,15 +10,23 @@
     "generate": "drizzle-kit generate:sqlite --schema=functions/api/schema.ts",
     "up": "drizzle-kit up:sqlite",
     "build-deploy": "npm run build && drizzle-kit generate:sqlite --schema=functions/api/schema.ts --out=./migrations",
-    "build-migration": "npm run build && drizzle-kit generate:sqlite --schema=functions/api/schema.ts --out=./migrations && wrangler d1 migrations apply delta_db"
+    "build-migration": "npm run build && drizzle-kit generate:sqlite --schema=functions/api/schema.ts --out=./migrations && wrangler d1 migrations apply delta_db",
+    "db:studio:local": "powershell -ExecutionPolicy Bypass -File start-studio.ps1",
+    "db:studio:prod": "drizzle-kit studio",
+    "print-db-path": "powershell -ExecutionPolicy Bypass -File print-db-path.ps1"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.2.0",
+    "@lucia-auth/adapter-drizzle": "^1.0.7",
     "@tanstack/react-router": "^1.19.13",
     "@tanstack/router-devtools": "^1.19.13",
     "@vitejs/plugin-react": "^4.2.1",
+    "better-sqlite3": "^9.4.3",
+    "dotenv": "^16.4.5",
     "drizzle-orm": "^0.30.4",
     "hono": "^4.1.0",
+    "lucia": "^3.1.1",
+    "oslo": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "zod": "^3.22.4"
@@ -31,6 +39,7 @@
     "@types/node": "^20.11.27",
     "@types/react": "^18.2.65",
     "@types/react-dom": "^18.2.22",
+    "cross-env": "^7.0.3",
     "drizzle-kit": "^0.20.14",
     "vite": "^5.0.12",
     "wrangler": "^3.32.0"

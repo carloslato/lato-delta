@@ -9,17 +9,15 @@ export const Route = createLazyFileRoute('/')({
 
 function Index() {
 
-  const [idUser, setIdUser] = useState('');
   const [nameUser, setNameUser] = useState('');
   const [emailUser, setEmailUser] = useState('');
-  const [todolist, setTodolist] = useState<{ id: number; name: string; email: string; }[]>();
+  const [userslist, setUserslist] = useState<{ name: string; email: string; }[]>();
 
   async function sendTask() {
   //e.preventDefault;
   const client = hc<AppType>("");
   const res = await client.api.users.$post({
     form: {
-      idUser: `${idUser}`,
       name: nameUser,
       email: emailUser,
       
@@ -34,7 +32,7 @@ async function getTasks() {
   const client = hc<AppType>("");
   const res = await client.api.users.$get();
   const data = await res.json();
-  setTodolist(data);
+  setUserslist(data);
   console.log(data);
 }
 
@@ -48,7 +46,6 @@ useEffect(() => {
       <h3>Welcome Home!</h3>
       <div>
         <div>
-          <input id="id" type="number"  onChange={(e) => setIdUser(e.target.value)} />
           <input id="name" type="text" onChange={(e) => setNameUser(e.target.value)} />
           <input id="email" type="text" onChange={(e) => setEmailUser(e.target.value)} />
           <button onClick={sendTask}>guardar</button>
@@ -56,7 +53,7 @@ useEffect(() => {
       </div>
 
       <ul>
-        {todolist?.map((item: any, index: number) =>
+        {userslist?.map((item: any, index: number) =>
             <li key={index}>{item.id}: {item.name} - {item.email}</li>
         )}
       </ul>
